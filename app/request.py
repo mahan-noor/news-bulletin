@@ -59,11 +59,11 @@ def get_article(category):
     '''
     get_article_url = base_url.format(category,api_key)
 
-    with urllib.request.urlopen(get_sources_url) as url:
-        get_sources_data = url.read()
-        get_sources_response = json.loads(get_sources_data)
+    with urllib.request.urlopen(get_article_url) as url:
+        get_article_data = url.read()
+        get_article_response = json.loads(get_article_data)
 
-        sources_results = None
+        article_results = None
 
         if response['article']:
             article_results_list = response['article']
