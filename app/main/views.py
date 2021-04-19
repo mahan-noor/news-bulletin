@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from request import get_sources,get_article,search_article
-from models import Sources
+from ..request import get_sources,get_article,search_article
+from ..models import source
 
 
 
@@ -22,7 +22,7 @@ def index():
 
 
 
-@main.route(/news)
+@main.route('/news')
 def news():
     '''
     view news page that returns news detail and its data
@@ -40,7 +40,7 @@ def search_article(article_name):
     search_article_format = "+".join(search_name_list)
     searched_article = search_article(search_name_format)
     title = f'search results for {search_name}'
-    return render_template('search.html', = searched_movies)
+    return render_template('search.html', articles = searched_movies)
 
 
     
