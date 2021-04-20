@@ -14,7 +14,7 @@ def index():
     View root page function that returns the index page and its data
 
     '''
-    source = get_sources()
+    source = get_sources('sources')
     print(source)
 
     title = 'Home , some of the news sources'
@@ -22,14 +22,14 @@ def index():
 
 
 
-@main.route('/news')
-def news():
+@main.route('/article')
+def article():
     '''
-    view news page that returns news detail and its data
+    View articles page that returns articles detail and its data
     '''
-    article=get_article()
+    article=get_article('all')
   
-    return render_template('news.html', article=article, title=title)
+    return render_template('article.html', article=article, title=title)
 
 @main.route('/search/<article_name>')
 def search_article(article_name):

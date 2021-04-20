@@ -3,9 +3,16 @@ from .models import source,article
 from config import config
 
 
-api_key =config.NEWS_API_KEY
-base_url = config.SOURCE_BASE_URL
-base_url =config.ARTICLE_BASE_URL
+api_key = None
+source_url = None
+base_url = None
+
+def configure_request(app):
+    global api_key,source_url,base_url
+    api_key = app.config['NEWS_API_KEY']
+    source_url = app.config['SOURCE_BASE_URL']
+    base_url = app.config['ARTICLE_BASE_URL']
+
 
 
 def get_sources(category):
@@ -14,15 +21,15 @@ def get_sources(category):
     '''
     get_sources_url = base_url.format(category,api_key)
 
-    with urllib.request.urlopen(get_sources_url) as url:
+    with urllib.request.urlopen(source_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
 
         sources_results = None
 
-        if get_sources_response['results']:
+        if get_sources('sources'):
             sources_results_list = get_sources_response['results']
-            sources_results = process_results(sources_results_list)
+            sources_results = process_source(sources_results_list)
 
 
     return sources_results
@@ -59,7 +66,7 @@ def get_article(category):
     '''
     get_article_url = base_url.format(category,api_key)
 
-    with urllib.request.urlopen(get_article_url) as url:
+    with urllib.request.urlopen(base_url + '315048c7f545435692ee48d4e32a3d71') as url:
         get_article_data = url.read()
         get_article_response = json.loads(get_article_data)
 
