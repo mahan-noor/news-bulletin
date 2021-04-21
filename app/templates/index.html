@@ -1,13 +1,48 @@
-{% extends 'base.html' %}
-<!-- styles block -->
-{% block styles %}
-<div class=" container">
-    <h2 class="text-center">~News Sources~</h2>
-    <div class="row ">
-        <div class="col-md-3 ">
-            {% for source in source %}
-            <a href="{{ source.url }} " target="_blank ">{{ source.name }}</a>
-            {% endfor %}
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/indexpage.css')}}">
+{% endblock %}
+
+
+{% block content%}
+<div class="container">
+    <div class="row">
+        <!-- Business News Section  -->
+        <div class="container-fluid business">
+        <h3 class="text-center"> Business News Sources</h3>
+        <hr>
+            {{ macro.displayNewsList(business_news)}}
+        </div>
+
+        <!-- Sports news section -->
+        <div class="container-fluid">
+            <h3 class="text-center"> Sports News Sources</h3>
+            <hr>
+            <div class="row">
+                {{ macro.displayNewsList(sports_news)}}
+            </div>
+        </div>
+
+        <!-- Entertainment News Section  -->
+        <div class="container-fluid">
+        <h3 class="text-center"> Entertainment News Sources</h3>
+        <hr>
+        
+        {{ macro.displayNewsList(entertainment_news)}}
+        </div>
+    </div>
+
+</div>
+
+{%endblock%}
+
+</body>
+
+</html>
             <!-- <div class="card text-center border-secondary mb-3 box">
                 <p {{source.name}}></p>
 
@@ -19,9 +54,5 @@
                 </div>
 
             </div> -->
-            
-        </div>
         
-    </div>
-</div>
 {% endblock %}
