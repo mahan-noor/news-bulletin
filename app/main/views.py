@@ -14,11 +14,10 @@ def index():
     View root page function that returns the index page and its data
 
     '''
-    source = get_sources('sources')
-    print(source)
+    sources = get_sources()
 
-    title = 'Home , some of the news sources'
-    return render_template('index.html',title=title , source=source)
+    title = 'Home'
+    return render_template('index.html',title=title,sources=sources)
 
 
 
@@ -27,20 +26,20 @@ def article():
     '''
     View articles page that returns articles detail and its data
     '''
-    article=get_article('all')
+    article = get_article()
   
-    return render_template('article.html', article=article, title=title)
+    return render_template('article.html', article=article,title=title)
 
 @main.route('/search/<article_name>')
 def search_article(article_name):
     '''
     View function to display the search results
     '''
-    search_article_list = article_name.split(" ")
-    search_article_format = "+".join(search_name_list)
+    search_article_name = article_name.split(" ")
+    search_article_format = "+".join(search_article_name)
     searched_article = search_article(search_name_format)
     title = f'search results for {search_name}'
-    return render_template('search.html', articles = searched_movies)
+    return render_template('search.html', articles = searched_)
 
 
     

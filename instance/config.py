@@ -1,2 +1,0 @@
-NEWS_API_KEY = '315048c7f545435692ee48d4e32a3d71'
-SERET_KEY = b'_\xf6\xbeI\xb6Ne\x99\xa1[\x94\x90'

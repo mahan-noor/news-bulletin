@@ -1,14 +1,17 @@
 from flask import Flask
-# from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 from config import config_options
 
-# bootstrap = Bootstrap()
+bootstrap = Bootstrap()
 def create_app(config_name):
     # Initializing application
-    app = Flask(__name__,instance_relative_config = True)
+    app = Flask(__name__)
     
     # creating app configuration
     app.config.from_object(config_options[config_name])
+
+    #initializing flask extention
+    bootstrap.init_app(app)
 
     # Registering the blueprint
     from .main import main as main_blueprint

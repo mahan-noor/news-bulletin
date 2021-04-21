@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<!-- styles block -->
+{% block styles %}
+<div class=" container">
+    <h2 class="text-center">~News Sources~</h2>
+    <div class="row ">
+        <div class="col-md-3 ">
+            {% for source in source %}
+            <a href="{{ source.url }} " target="_blank ">{{ source.name }}</a>
+            {% endfor %}
+            <!-- <div class="card text-center border-secondary mb-3 box">
+                <p {{source.name}}></p>
+
+                <div class="card-body ">
+                    <div class="card-title "><a href="{{source.url}} " target="_blank ">{{source.name}}</a>
+                    </div>
+                    <p class="card-text ">{{source.description|truncate(100)}}</p>
+
+                </div>
+
+            </div> -->
+            
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

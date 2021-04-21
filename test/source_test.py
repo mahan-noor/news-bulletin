@@ -1,6 +1,6 @@
 import unittest
 from models import source
-sources = sources.Sources
+
 
 class SourcesTest(unittest.TestCase):
     '''
@@ -10,10 +10,20 @@ class SourcesTest(unittest.TestCase):
          '''
         Set up method that will run before every Test
         '''
-        self.new_sources = sources('Citizen tv','us','general','Messi got injury',"https://abcnews.go.com",8.5)
+        self.new_sources = sources('Citizen tv','Nation news',,'Messi got injury',"https://abcnews.go.com",'general',8.5)
 
         def test_instance(self):
             self.assertTrue(isinstance(self.new_source,Sources))
+
+
+    
+    def test_to_check_instance_variables(self): 
+        self.assertEquals(self.new_source.id,'Citizen tv') 
+        self.assertEquals(self.new_source.name,'Nation news') 
+        self.assertEquals(self.new_source.description,'Messi got injury') 
+        self.assertEquals(self.new_source.url,'dailynation.co.ke') 
+        self.assertEquals(self.new_source.category,'general')
+        self.assertEquals(self.new_source.country,'Kenya') 
 
 
 

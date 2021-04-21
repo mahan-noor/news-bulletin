@@ -13,28 +13,31 @@ def configure_request(app):
     source_url = app.config['SOURCE_BASE_URL']
     base_url = app.config['ARTICLE_BASE_URL']
 
+    
 
-
-def get_sources(category):
+def get_sources():
     '''
     Function that gets the json response to our url request
     '''
-    get_sources_url = base_url.format(category,api_key)
+    get_sources_url = source_url.format(api_key)
+  
+ 
 
-    with urllib.request.urlopen(source_url) as url:
+    with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
+       
 
         sources_results = None
 
-        if get_sources('sources'):
-            sources_results_list = get_sources_response['results']
-            sources_results = process_source(sources_results_list)
+        if get_sources_response['sources']:
+            sources_results_list = get_sources_response ['sources']
+            sources_results = process_results(sources_results_list)
 
 
     return sources_results
 
-def process_results(sources_list):
+def process_results(source_list):
     '''
     Function  that processes the sources result and transform them to a list of Objects
 
@@ -45,6 +48,7 @@ def process_results(sources_list):
         sources_results: A list of sources objects
     '''
     sources_results = []
+
     for  sources_item in sources_list:
         id = sources_item.get('id')
         name = sources_item.get('name')
@@ -53,27 +57,28 @@ def process_results(sources_list):
         category =sources_item.get('category')
         language =sources_item.get('language')
 
-        if poster:
-           sources_object = Sources(id,name,description,url,category,language)
-           sources_results.append(sources_object)
+        if url:
+            sources_object = Sources(id,name,description,url,category,language)
+            sources_results.append(sources_object)
+    
 
     return sources_results
 
 
-def get_article(category):
+def get_article(articles):
     '''
     Function that gets the json response to our url request
     '''
-    get_article_url = base_url.format(category,api_key)
+    get_article_url = base_url.format(articles,api_key)
 
-    with urllib.request.urlopen(base_url + '315048c7f545435692ee48d4e32a3d71') as url:
+    with urllib.request.urlopen(get_article_url) as url:
         get_article_data = url.read()
         get_article_response = json.loads(get_article_data)
 
         article_results = None
 
-        if response['article']:
-            article_results_list = response['article']
+        if response['articles']:
+            article_results_list = response['articles']
             article_results = process_article(article_results_list)
 
 
@@ -92,15 +97,15 @@ def process_results(article_list):
     article_results = []
     for  article_item in article_list:
         
-        id = one_article.get("source")
-        title = one_article.get("title")
-        description = one_article.get("description")
-        url = one_article.get ("url")
-        urlToImage = one_article.get("urlToImage")
-        publishedAt = one_article.get("publishedAt")
+        id = article_item.get("source.name")
+        title =article_item.get("title")
+        description = article_item.get("description")
+        url = article_item.get ("url")
+        urlToImage = article_item.get("urlToImage")
+        publishedAt = article_item.get("publishedAt")
      
 
-        if poster:
+        if urlToImage:
            article_object = article(source,title,description,url,urlToImage,publishedAt)
            article_results.append(article_object)
 
