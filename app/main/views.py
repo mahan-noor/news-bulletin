@@ -14,19 +14,21 @@ def index():
     '''
 
     sports_news = get_news()
-    # entertainment_news = get_news_response("entertainment")
-    # business_news = get_news_response("business")
+    entertainment_news = get_news()
+    business_news = get_news()
     title = "News App - Where news live on"
     return render_template('index.html' , title = title, sports_news = sports_news)  
 
-@main.route('/news/<id>')
-def articles(id):
+@main.route('/articles')
+def articles():
 	'''
 	view articles page
 	'''
-	articles = get_articles(id)
+	articles = get_articles('articles')
 
-	title = f'NH | {id}'
+
+	title = 'articles'
+    
 
 	return render_template('articles.html',title= title,articles = articles)
 @main.route('/search/<article_name>')

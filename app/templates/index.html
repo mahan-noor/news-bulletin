@@ -1,5 +1,5 @@
 {% extends 'base.html'%}
-{% import 'macros.html' as macro %}
+{% import 'macro.html' as macro %}
 
 
 {% block styles%}
@@ -11,16 +11,11 @@
 {% block content%}
 <div class="container">
     <div class="row">
-        <!-- Business News Section  -->
-        <div class="container-fluid business">
-        <h3 class="text-center"> Business News Sources</h3>
-        <hr>
-            {{ macro.displayNewsList(business_news)}}
-        </div>
+        
 
         <!-- Sports news section -->
         <div class="container-fluid">
-            <h3 class="text-center"> Sports News Sources</h3>
+            <h3 class="text-center"></h3>
             <hr>
             <div class="row">
                 {{ macro.displayNewsList(sports_news)}}
@@ -43,16 +38,4 @@
 </body>
 
 </html>
-            <!-- <div class="card text-center border-secondary mb-3 box">
-                <p {{source.name}}></p>
-
-                <div class="card-body ">
-                    <div class="card-title "><a href="{{source.url}} " target="_blank ">{{source.name}}</a>
-                    </div>
-                    <p class="card-text ">{{source.description|truncate(100)}}</p>
-
-                </div>
-
-            </div> -->
-        
-{% endblock %}
+           

@@ -10,7 +10,7 @@
         <p class="card-text">{{ news.description |truncate(100) }}</p>
       </div>
       <div class="card-footer text-center">
-          <a href="/news/{{news.id}}" class="btn btn-primary">Go {{news.name}}</a>
+          <a href="{{news.url}}" class="btn btn-primary" target="_blank">Go {{news.name}}</a>
       </div>
   </div>
 </div>
