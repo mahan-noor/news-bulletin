@@ -14,8 +14,6 @@ def index():
     '''
 
     sports_news = get_news()
-    entertainment_news = get_news()
-    business_news = get_news()
     title = "News App - Where news live on"
     return render_template('index.html' , title = title, sports_news = sports_news)  
 
