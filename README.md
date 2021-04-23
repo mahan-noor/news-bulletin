@@ -17,6 +17,16 @@
   * Bootstrap
   * Heroku
 
+  # User story 
+
+    * A user would see various news sources on the homepage of the application.
+    * A user would also be able to select a news source and see all news articles from the selected news source in the application.
+    * A user will be able to see the image, description and the time a news article was created from the Articles tab.
+    * A user read the full article on the source website.
+    
+  # known bug
+  * unable to view the site link of heroku experiencing error H13 which means connection closed without response
+
   # Cloning 
    git clone:https://github.com/mahan-noor/news-bulletin.git
  
